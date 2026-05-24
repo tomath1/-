@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Love Irene ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Dancing+Script:wght@400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           RESET & BASE STYLES
+        ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-light: #ffb6d9;
+            --pink-main: #ff69b4;
+            --pink-deep: #e91e8c;
+            --purple-light: #d4a8ff;
+            --purple-main: #9b59b6;
+            --purple-deep: #6c3483;
+            --rose-gold: #b76e79;
+            --dark-bg: #0a0008;
+            --dark-card: rgba(20, 5, 25, 0.85);
+            --glow-pink: rgba(255, 105, 180, 0.6);
+            --glow-purple: rgba(155, 89, 182, 0.6);
+            --text-light: #fff0f8;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--dark-bg);
+            font-family: 'Amiri', serif;
+            color: var(--text-light);
+            cursor: none;
+        }
+
+        /* ============================================
+           CUSTOM CURSOR
+        ============================================ */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            z-index: 99999;
+            transition: transform 0.15s ease;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--pink-main);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px var(--glow-pink);
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-ring {
+            position: fixed;
+            width: 35px;
+            height: 35px;
+            border: 1.5px solid var(--pink-light);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        /* ============================================
+           ANIMATED BACKGROUND
+        ============================================ */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(108, 52, 131, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(233, 30, 140, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(155, 89, 182, 0.25) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0008 0%, #15002a 30%, #200015 60%, #0a0008 100%);
+            animation: bgShift 12s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes bgShift {
+            0%   { filter: hue-rotate(0deg) brightness(1); }
+            50%  { filter: hue-rotate(15deg) brightness(1.1); }
+            100% { filter: hue-rotate(-10deg) brightness(0.95); }
+        }
+
+        /* ============================================
+           STAR PARTICLES
+        ============================================ */
+        .stars-container {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--dur) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50%       { opacity: var(--op); transform: scale(1); }
+        }
+
+        /* ============================================
+           FLOATING HEARTS (BACKGROUND)
+        ============================================ */
+        .hearts-bg {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart-bg {
+            position: absolute;
+            bottom: -100px;
+            font-size: var(--size);
+            animation: floatHeartBg var(--dur) ease-in infinite;
+            opacity: 0;
+            filter: blur(0.5px);
+        }
+
+        @keyframes floatHeartBg {
+            0%   { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+            10%  { opacity: var(--op); }
+            80%  { opacity: var(--op); }
+            100% { transform: translateY(-110vh) rotate(720deg) scale(1.2); opacity: 0; }
+        }
+
+        /* ============================================
+           INTRO OVERLAY
+        ============================================ */
+        .intro-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, #1a0030 0%, #0a0008 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 1.5s ease, visibility 1.5s ease;
+        }
+
+        .intro-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .intro-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            color: var(--pink-light);
+            text-align: center;
+            animation: introTitleAnim 2s ease forwards;
+            text-shadow: 
+                0 0 30px var(--glow-pink),
+                0 0 60px rgba(255, 105, 180, 0.3);
+            letter-spacing: 3px;
+            line-height: 1.3;
+        }
+
+        .intro-heart {
+            font-size: clamp(3rem, 10vw, 7rem);
+            animation: introPulse 1.5s ease-in-out infinite;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px var(--glow-pink));
+        }
+
+        @keyframes introTitleAnim {
+            0%   { opacity: 0; transform: translateY(40px) scale(0.8); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes introPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px var(--glow-pink)); }
+            50%       { transform: scale(1.2); filter: drop-shadow(0 0 35px var(--glow-pink)); }
+        }
+
+        .intro-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+            color: var(--purple-light);
+            letter-spacing: 6px;
+            margin-top: 15px;
+            animation: fadeInUp 2.5s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            0%   { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .intro-enter-btn {
+            margin-top: 50px;
+            padding: 16px 50px;
+            background: linear-gradient(135deg, var(--pink-deep), var(--purple-deep));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            cursor: pointer;
+            animation: fadeInUp 3s ease forwards;
+            opacity: 0;
+            transition: var(--transition);
+            box-shadow: 0 0 30px rgba(233, 30, 140, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-enter-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .intro-enter-btn:hover::before { transform: rotate(45deg) translate(50%, 50%); }
+
+        .intro-enter-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(233, 30, 140, 0.7), 0 0 100px rgba(155, 89, 182, 0.3);
+        }
+
+        /* ============================================
+           MAIN CONTENT WRAPPER
+        ============================================ */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 80px;
+        }
+
+        /* ============================================
+           HEADER / NAME SECTION
+        ============================================ */
+        .header-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 30px;
+            width: 100%;
+        }
+
+        .to-text {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.7rem, 2vw, 0.95rem);
+            letter-spacing: 8px;
+            color: var(--purple-light);
+            opacity: 0.8;
+            margin-bottom: 10px;
+            animation: slideDown 1s ease 0.5s both;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 0.8; transform: translateY(0); }
+        }
+
+        .name-irene {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(5rem, 18vw, 13rem);
+            line-height: 1;
+            background: linear-gradient(
+                135deg,
+                #ffb6d9 0%,
+                #ff69b4 25%,
+                #d4a8ff 50%,
+                #ff69b4 75%,
+                #ffb6d9 100%
+            );
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: nameGradient 5s ease infinite, nameEntrance 1.2s ease 0.3s both;
+            text-shadow: none;
+            filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.5));
+            position: relative;
+        }
+
+        @keyframes nameGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50%       { background-position: 100% 50%; }
+        }
+
+        @keyframes nameEntrance {
+            from { opacity: 0; transform: scale(0.7) translateY(30px); filter: drop-shadow(0 0 0px transparent) blur(10px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.5)) blur(0px); }
+        }
+
+        .name-irene::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1em;
+            background: linear-gradient(135deg, #ffb6d9, #ff69b4, #d4a8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: blur(25px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto;
+            width: min(500px, 90%);
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--pink-main), transparent);
+            opacity: 0.6;
+        }
+
+        .divider-heart {
+            font-size: 1.2rem;
+            animation: divHeartPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px var(--glow-pink));
+        }
+
+        @keyframes divHeartPulse {
+            0%, 100% { transform: scale(1); }
+            50%       { transform: scale(1.3); }
+        }
+
+        /* ============================================
+           MUSIC BUTTON
+        ============================================ */
+        .music-btn-wrap {
+            margin-bottom: 30px;
+        }
+
+        .music-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: rgba(255, 105, 180, 0.1);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 50px;
+            color: var(--pink-light);
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease 1.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .music-btn:hover {
+            background: rgba(255, 105, 180, 0.2);
+            border-color: var(--pink-main);
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.4), inset 0 0 20px rgba(255, 105, 180, 0.05);
+            transform: scale(1.05);
+        }
+
+        .music-btn.playing {
+            background: rgba(233, 30, 140, 0.15);
+            border-color: var(--pink-deep);
+            box-shadow: 0 0 30px rgba(233, 30, 140, 0.5);
+        }
+
+        .music-icon {
+            font-size: 1.1rem;
+            animation: none;
+        }
+
+        .music-btn.playing .music-icon {
+            animation: musicDance 0.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes musicDance {
+            from { transform: translateY(0) scale(1); }
+            to   { transform: translateY(-3px) scale(1.1); }
+        }
+
+        .music-waves {
+            display: flex;
+            gap: 3px;
+            align-items: center;
+            height: 20px;
+        }
+
+        .wave-bar {
+            width: 3px;
+            background: var(--pink-main);
+            border-radius: 3px;
+            height: 5px;
+            transition: var(--transition);
+        }
+
+        .music-btn.playing .wave-bar:nth-child(1) { animation: wave 0.8s ease-in-out infinite; }
+        .music-btn.playing .wave-bar:nth-child(2) { animation: wave 0.8s ease-in-out 0.1s infinite; }
+        .music-btn.playing .wave-bar:nth-child(3) { animation: wave 0.8s ease-in-out 0.2s infinite; }
+        .music-btn.playing .wave-bar:nth-child(4) { animation: wave 0.8s ease-in-out 0.15s infinite; }
+        .music-btn.playing .wave-bar:nth-child(5) { animation: wave 0.8s ease-in-out 0.05s infinite; }
+
+        @keyframes wave {
+            0%, 100% { height: 4px; }
+            50%       { height: 18px; }
+        }
+
+        /* ============================================
+           LETTER CARD
+        ============================================ */
+        .letter-card {
+            width: min(750px, 95%);
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 105, 180, 0.2);
+            border-radius: 24px;
+            padding: clamp(30px, 5vw, 60px) clamp(25px, 5vw, 55px);
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 0 60px rgba(233, 30, 140, 0.15),
+                0 0 120px rgba(108, 52, 131, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 30px 80px rgba(0,0,0,0.5);
+            animation: cardEntrance 1.5s ease 0.8s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(60px); filter: blur(5px); }
+            to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .letter-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--pink-main), var(--purple-main), var(--pink-main), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .letter-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255,105,180,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0%   { background-position: -200% center; opacity: 0.5; }
+            50%  { opacity: 1; }
+            100% { background-position: 200% center; opacity: 0.5; }
+        }
+
+        /* Decorative corner roses */
+        .corner-deco {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.15;
+            pointer-events: none;
+            animation: cornerPulse 4s ease-in-out infinite;
+        }
+        .corner-deco.tl { top: 15px; left: 15px; transform: rotate(-30deg); }
+        .corner-deco.tr { top: 15px; right: 15px; transform: rotate(30deg); }
+        .corner-deco.bl { bottom: 15px; left: 15px; transform: rotate(30deg); }
+        .corner-deco.br { bottom: 15px; right: 15px; transform: rotate(-30deg); }
+
+        @keyframes cornerPulse {
+            0%, 100% { opacity: 0.12; transform: scale(1) rotate(-30deg); }
+            50%       { opacity: 0.25; transform: scale(1.1) rotate(-30deg); }
+        }
+        .corner-deco.tr { animation-name: cornerPulseR; }
+        @keyframes cornerPulseR {
+            0%, 100% { opacity: 0.12; transform: scale(1) rotate(30deg); }
+            50%       { opacity: 0.25; transform: scale(1.1) rotate(30deg); }
+        }
+
+        /* Letter greeting */
+        .letter-greeting {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: var(--pink-light);
+            text-shadow: 0 0 20px var(--glow-pink);
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        /* Typewriter text */
+        .letter-body {
+            font-family: 'Amiri', serif;
+            font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+            line-height: 2.4;
+            color: rgba(255, 240, 248, 0.9);
+            direction: rtl;
+            text-align: right;
+            position: relative;
+        }
+
+        .typewriter-line {
+            display: block;
+            overflow: hidden;
+            white-space: normal;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .typewriter-line.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .letter-body .highlight {
+            color: var(--pink-main);
+            font-style: italic;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .letter-body .highlight-purple {
+            color: var(--purple-light);
+            text-shadow: 0 0 15px rgba(212, 168, 255, 0.4);
+        }
+
+        .letter-signature {
+            margin-top: 35px;
+            text-align: left;
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--pink-light);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .letter-signature.visible {
+            opacity: 1;
+        }
+
+        /* ============================================
+           LOVE BUTTON
+        ============================================ */
+        .love-btn-section {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            animation: fadeIn 1s ease 2s both;
+        }
+
+        .love-btn {
+            position: relative;
+            padding: 22px 70px;
+            background: linear-gradient(135deg, #e91e8c, #9b59b6, #e91e8c);
+            background-size: 200% 200%;
+            border: none;
+            border-radius: 60px;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            letter-spacing: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 
+                0 0 30px rgba(233, 30, 140, 0.5),
+                0 0 60px rgba(155, 89, 182, 0.3),
+                0 10px 40px rgba(0,0,0,0.4);
+            animation: btnGradAnim 4s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes btnGradAnim {
+            0%, 100% { background-position: 0% 50%; }
+            50%       { background-position: 100% 50%; }
+        }
+
+        .love-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .love-btn:hover::before { left: 100%; }
+
+        .love-btn:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 
+                0 0 50px rgba(233, 30, 140, 0.8),
+                0 0 100px rgba(155, 89, 182, 0.5),
+                0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .love-btn:active { transform: scale(0.97); }
+
+        .love-btn-text { position: relative; z-index: 1; }
+
+        /* Pulsing ring around button */
+        .love-btn-ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: 65px;
+            border: 2px solid rgba(255, 105, 180, 0.4);
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50%       { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        /* ============================================
+           FLYING HEARTS (ON BUTTON CLICK)
+        ============================================ */
+        .flying-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9000;
+            animation: flyHeart var(--dur) ease-out forwards;
+            font-size: var(--size);
+            filter: drop-shadow(0 0 8px var(--glow-pink));
+        }
+
+        @keyframes flyHeart {
+            0%   { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 1; }
+            20%  { transform: translate(var(--dx20), var(--dy20)) scale(1.2) rotate(var(--r20)); opacity: 1; }
+            100% { transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--r)); opacity: 0; }
+        }
+
+        /* ============================================
+           FOOTER HEARTS ROW
+        ============================================ */
+        .footer-hearts {
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 3vw, 25px);
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .footer-heart {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            animation: footHeartPulse var(--dur) ease-in-out infinite;
+            filter: drop-shadow(0 0 6px var(--glow-pink));
+        }
+
+        @keyframes footHeartPulse {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50%       { transform: scale(1.25) translateY(-5px); }
+        }
+
+        /* ============================================
+           PARTICLE BURST (on click)
+        ============================================ */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9001;
+            border-radius: 50%;
+            animation: particleBurst var(--dur) ease-out forwards;
+        }
+
+        @keyframes particleBurst {
+            0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+        }
+
+        /* ============================================
+           TOAST NOTIFICATION
+        ============================================ */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, rgba(233,30,140,0.9), rgba(155,89,182,0.9));
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(233, 30, 140, 0.5);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 9999;
+            text-align: center;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ============================================
+           SCROLL INDICATOR
+        ============================================ */
+        .scroll-hint {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            opacity: 0.5;
+            z-index: 100;
+            animation: fadeIn 1s ease 3s both;
+        }
+
+        .scroll-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--pink-light);
+            border-radius: 50%;
+            animation: scrollDotAnim 1.5s ease-in-out infinite;
+        }
+
+        .scroll-dot:nth-child(2) { animation-delay: 0.2s; }
+        .scroll-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes scrollDotAnim {
+            0%, 100% { opacity: 0.3; transform: translateY(0); }
+            50%       { opacity: 1; transform: translateY(4px); }
+        }
+
+        /* ============================================
+           AMBIENT ORBS
+        ============================================ */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.12;
+            animation: orbFloat var(--dur) ease-in-out infinite alternate;
+        }
+
+        @keyframes orbFloat {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(var(--dx), var(--dy)) scale(1.1); }
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 600px) {
+            .letter-card { padding: 28px 20px; }
+            .intro-title { font-size: 2.2rem; }
+            .name-irene { font-size: 4.5rem; }
+        }
+
+        /* ============================================
+           PARALLAX WRAPPER
+        ============================================ */
+        .parallax-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 3;
+            transition: transform 0.1s linear;
+        }
+
+        /* ============================================
+           SCROLLBAR STYLING
+        ============================================ */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--dark-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--pink-deep); border-radius: 5px; }
+
+        /* Disable text selection for aesthetic */
+        .name-irene, .letter-greeting { user-select: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Animated Background -->
+    <div class="bg-gradient"></div>
+
+    <!-- Ambient Orbs -->
+    <div class="ambient-orb" style="width:600px;height:600px;background:var(--pink-deep);top:-100px;left:-150px;--dur:15s;--dx:40px;--dy:60px;"></div>
+    <div class="ambient-orb" style="width:500px;height:500px;background:var(--purple-deep);bottom:-100px;right:-100px;--dur:18s;--dx:-50px;--dy:-40px;"></div>
+    <div class="ambient-orb" style="width:350px;height:350px;background:var(--pink-main);top:50%;left:50%;transform:translate(-50%,-50%);--dur:12s;--dx:30px;--dy:-30px;"></div>
+
+    <!-- Stars -->
+    <div class="stars-container" id="starsContainer"></div>
+
+    <!-- Floating Hearts Background -->
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- Parallax Layer -->
+    <div class="parallax-layer" id="parallaxLayer"></div>
+
+    <!-- ==================== INTRO OVERLAY ==================== -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-heart">💝</div>
+        <h1 class="intro-title">To My Love<br>Irene ❤️</h1>
+        <p class="intro-subtitle">A MESSAGE FROM THE HEART</p>
+        <button class="intro-enter-btn" id="enterBtn" onclick="enterPage()">
+            OPEN WITH LOVE
+        </button>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="main-content" id="mainContent">
+
+        <!-- Header -->
+        <header class="header-section">
+            <p class="to-text">✦ A LOVE LETTER TO ✦</p>
+            <h1 class="name-irene" data-text="إيريني">إيريني</h1>
+            
+            <div class="divider">
+                <div class="divider-line"></div>
+                <span class="divider-heart">💕</span>
+                <span class="divider-heart" style="animation-delay:0.3s">🌸</span>
+                <span class="divider-heart" style="animation-delay:0.6s">💕</span>
+                <div class="divider-line"></div>
+            </div>
+        </header>
+
+        <!-- Music Button -->
+        <div class="music-btn-wrap">
+            <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+                <span class="music-icon">🎵</span>
+                <span id="musicText">عزف لحن الحب</span>
+                <div class="music-waves">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+            </button>
+        </div>
+
+        <!-- Letter Card -->
+        <article class="letter-card" id="letterCard">
+            <span class="corner-deco tl">🌹</span>
+            <span class="corner-deco tr">🌹</span>
+            <span class="corner-deco bl">🌹</span>
+            <span class="corner-deco br">🌹</span>
+
+            <span class="letter-greeting">إيريني الغالية...</span>
+
+            <div class="letter-body" id="letterBody">
+                <span class="typewriter-line" id="line1">
+                    منذ أن <span class="highlight">عرفتك</span> أصبح للحياة معنى <span class="highlight-purple">أجمل</span>،
+                </span>
+                <br>
+                <span class="typewriter-line" id="line2">
+                    وصار قلبي لا يعرف سوى <span class="highlight">اسمك</span>.
+                </span>
+                <br><br>
+                <span class="typewriter-line" id="line3">
+                    أنتِ <span class="highlight">النور</span> الذي يُضيء أيامي،
+                </span>
+                <br>
+                <span class="typewriter-line" id="line4">
+                    والسلام الذي <span class="highlight-purple">أبحث عنه</span> دائمًا.
+                </span>
+                <br><br>
+                <span class="typewriter-line" id="line5">
+                    أُحبكِ أكثر مما تستطيع الكلمات وصفه <span class="highlight">❤️</span>
+                </span>
+            </div>
+
+            <div class="letter-signature" id="letterSig">
+                ~ بكل حب وإخلاص، لكِ وحدكِ 🌹
+            </div>
+        </article>
+
+        <!-- Love Button -->
+        <div class="love-btn-section">
+            <button class="love-btn" id="loveBtn" onclick="loveClick(event)">
+                <div class="love-btn-ring"></div>
+                <span class="love-btn-text">💖 I Love You 💖</span>
+            </button>
+        </div>
+
+        <!-- Footer Hearts -->
+        <div class="footer-hearts">
+            <span class="footer-heart" style="--dur:2.0s">💗</span>
+            <span class="footer-heart" style="--dur:2.5s">🌸</span>
+            <span class="footer-heart" style="--dur:1.8s">💖</span>
+            <span class="footer-heart" style="--dur:2.3s">🌺</span>
+            <span class="footer-heart" style="--dur:2.1s">💝</span>
+            <span class="footer-heart" style="--dur:1.9s">🌸</span>
+            <span class="footer-heart" style="--dur:2.4s">💗</span>
+        </div>
+
+    </div>
+
+    <!-- Scroll Hint -->
+    <div class="scroll-hint">
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Hidden Audio -->
+    <audio id="bgMusic" loop>
+        <!-- We'll generate music via Web Audio API since external URLs may not work -->
+    </audio>
+
+    <script>
+        /* ================================================
+           CURSOR
+        ================================================ */
+        const cursorDot  = document.getElementById('cursorDot');
+        const cursorRing = document.getElementById('cursorRing');
+        let mouseX = 0, mouseY = 0;
+        let ringX  = 0, ringY  = 0;
+
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top  = mouseY + 'px';
+        });
+
+        function animateCursor() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top  = ringY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.style.width  = '55px';
+                cursorRing.style.height = '55px';
+                cursorRing.style.borderColor = 'var(--pink-main)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.style.width  = '35px';
+                cursorRing.style.height = '35px';
+                cursorRing.style.borderColor = 'var(--pink-light)';
+            });
+        });
+
+        /* ================================================
+           STARS GENERATION
+        ================================================ */
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 180; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                const size = Math.random() * 2.5 + 0.5;
+                const x    = Math.random() * 100;
+                const y    = Math.random() * 100;
+                const dur  = (Math.random() * 4 + 2).toFixed(1);
+                const op   = (Math.random() * 0.6 + 0.2).toFixed(2);
+                const del  = (Math.random() * 5).toFixed(1);
+                star.style.cssText = `
+                    width: ${size}px; height: ${size}px;
+                    left: ${x}%; top: ${y}%;
+                    --dur: ${dur}s; --op: ${op};
+                    animation-delay: ${del}s;
+                `;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        /* ================================================
+           FLOATING HEARTS (BACKGROUND)
+        ================================================ */
+        const heartEmojis = ['💗','💕','💖','💝','🌸','💓','❤️','🌺','💞','✨'];
+
+        function createBgHeart() {
+            const container = document.getElementById('heartsBg');
+            const heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            const emoji  = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            const size   = (Math.random() * 20 + 10).toFixed(0);
+            const left   = (Math.random() * 100).toFixed(1);
+            const dur    = (Math.random() * 10 + 8).toFixed(1);
+            const delay  = (Math.random() * -15).toFixed(1);
+            const op     = (Math.random() * 0.3 + 0.1).toFixed(2);
+
+            heart.innerHTML = emoji;
+            heart.style.cssText = `
+                left: ${left}%;
+                --size: ${size}px;
+                --dur: ${dur}s;
+                --op: ${op};
+                animation-delay: ${delay}s;
+            `;
+            container.appendChild(heart);
+
+            // Remove after animation to prevent DOM overflow
+            setTimeout(() => {
+                if (heart.parentNode) heart.parentNode.removeChild(heart);
+            }, parseFloat(dur) * 1000 + 2000);
+        }
+
+        // Initial hearts
+        for (let i = 0; i < 15; i++) createBgHeart();
+        // Keep creating
+        setInterval(createBgHeart, 1200);
+
+        /* ================================================
+           INTRO → ENTER PAGE
+        ================================================ */
+        function enterPage() {
+            const overlay = document.getElementById('introOverlay');
+            overlay.classList.add('hidden');
+            startLetterAnimation();
+            playClickSound();
+        }
+
+        /* ================================================
+           LETTER REVEAL ANIMATION
+        ================================================ */
+        function startLetterAnimation() {
+            const lines = document.querySelectorAll('.typewriter-line');
+            lines.forEach((line, i) => {
+                setTimeout(() => {
+                    line.classList.add('visible');
+                }, 600 + i * 700);
+            });
+
+            // Signature
+            setTimeout(() => {
+                document.getElementById('letterSig').classList.add('visible');
+            }, 600 + lines.length * 700 + 500);
+        }
+
+        /* ================================================
+           MUSIC — Web Audio API Romantic Tones
+        ================================================ */
+        let audioCtx = null;
+        let musicNodes = [];
+        let isPlaying = false;
+        let masterGain = null;
+        let musicTimeout = null;
+
+        const romantichNotes = [
+            261.63, 293.66, 329.63, 349.23, 392.00, // C D E F G
+            440.00, 493.88, 523.25, 587.33, 659.25
+        ];
+
+        // Romantic melody sequence (note indices, duration ms)
+        const melodyPattern = [
+            [4,600],[6,400],[7,600],[6,400],[4,800],
+            [2,600],[3,400],[4,600],[3,400],[2,800],
+            [0,600],[2,400],[4,600],[6,400],[7,800],
+            [6,600],[4,400],[3,600],[2,400],[0,1000],
+        ];
+        let melodyIndex = 0;
+
+        function startMusic() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            masterGain = audioCtx.createGain();
+            masterGain.gain.setValueAtTime(0, audioCtx.currentTime);
+            masterGain.gain.linearRampToValueAtTime(0.18, audioCtx.currentTime + 1);
+            masterGain.connect(audioCtx.destination);
+
+            // Add reverb-like effect
+            const convolver = audioCtx.createConvolver();
+            const reverbBuffer = createReverbBuffer(audioCtx, 2.5);
+            convolver.buffer = reverbBuffer;
+            convolver.connect(masterGain);
+
+            // Melody scheduler
+            function scheduleNote() {
+                if (!isPlaying) return;
+                const [noteIdx, dur] = melodyPattern[melodyIndex % melodyPattern.length];
+                const freq = romantichNotes[noteIdx] * 0.5; // lower octave
+
+                const osc  = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.6, audioCtx.currentTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur / 1000);
+
+                osc.connect(gain);
+                gain.connect(convolver);
+                gain.connect(masterGain);
+
+                osc.start(audioCtx.currentTime);
+                osc.stop(audioCtx.currentTime + dur / 1000);
+
+                musicNodes.push(osc);
+                melodyIndex++;
+
+                musicTimeout = setTimeout(scheduleNote, dur * 0.85);
+            }
+
+            scheduleNote();
+
+            // Pad / ambient layer
+            playAmbientPad();
+        }
+
+        function playAmbientPad() {
+            if (!isPlaying || !audioCtx) return;
+            const frequencies = [130.81, 164.81, 196.00, 261.63]; // C3 chord
+            frequencies.forEach(freq => {
+                const osc  = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+                osc.connect(gain);
+                gain.connect(masterGain);
+                osc.start();
+                musicNodes.push(osc);
+            });
+        }
+
+        function createReverbBuffer(ctx, duration) {
+            const sr     = ctx.sampleRate;
+            const length = sr * duration;
+            const buf    = ctx.createBuffer(2, length, sr);
+            for (let c = 0; c < 2; c++) {
+                const data = buf.getChannelData(c);
+                for (let i = 0; i < length; i++) {
+                    data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2);
+                }
+            }
+            return buf;
+        }
+
+        function stopMusic() {
+            if (masterGain) {
+                masterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1);
+            }
+            clearTimeout(musicTimeout);
+            setTimeout(() => {
+                musicNodes.forEach(n => { try { n.stop(); } catch(e){} });
+                musicNodes = [];
+            }, 1200);
+        }
+
+        function toggleMusic() {
+            const btn      = document.getElementById('musicBtn');
+            const textEl   = document.getElementById('musicText');
+
+            if (isPlaying) {
+                isPlaying = false;
+                stopMusic();
+                btn.classList.remove('playing');
+                textEl.textContent = 'عزف لحن الحب';
+                btn.querySelector('.music-icon').textContent = '🎵';
+            } else {
+                isPlaying = true;
+                startMusic();
+                btn.classList.add('playing');
+                textEl.textContent = 'تشغيل...';
+                btn.querySelector('.music-icon').textContent = '🎶';
+            }
+        }
+
+        /* ================================================
+           CLICK SOUND EFFECT
+        ================================================ */
+        function playClickSound() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc  = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.frequency.setValueAtTime(660, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 0.3);
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+            osc.start(audioCtx.currentTime);
+            osc.stop(audioCtx.currentTime + 0.4);
+        }
+
+        function playLoveSound() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const notes = [523.25, 659.25, 783.99, 1046.5];
+            notes.forEach((freq, i) => {
+                const osc  = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime + i * 0.12);
+                gain.gain.setValueAtTime(0, audioCtx.currentTime + i * 0.12);
+                gain.gain.linearRampToValueAtTime(0.25, audioCtx.currentTime + i * 0.12 + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.12 + 0.5);
+                osc.start(audioCtx.currentTime + i * 0.12);
+                osc.stop(audioCtx.currentTime + i * 0.12 + 0.5);
+            });
+        }
+
+        /* ================================================
+           LOVE BUTTON CLICK → FLYING HEARTS
+        ================================================ */
+        let loveClickCount = 0;
+        const loveMessages = [
+            '💖 أُحبكِ يا إيريني 💖',
+            '🌹 أنتِ كل شيء بالنسبة لي 🌹',
+            '✨ قلبي لكِ وحدكِ ✨',
+            '💝 أنتِ حبي الوحيد 💝',
+            '🌸 إلى الأبد معكِ 🌸',
+            '💕 أنتِ نور روحي 💕',
+        ];
+
+        function loveClick(event) {
+            playLoveSound();
+            createFlyingHearts(event.clientX, event.clientY, 20);
+            createParticleBurst(event.clientX, event.clientY, 25);
+
+            loveClickCount++;
+            showToast(loveMessages[loveClickCount % loveMessages.length]);
+
+            // Button shake
+            const btn = document.getElementById('loveBtn');
+            btn.style.animation = 'none';
+            btn.offsetHeight; // reflow
+            btn.style.animation = '';
+        }
+
+        function createFlyingHearts(x, y, count) {
+            const emojis = ['💗','💕','💖','💝','🌸','❤️','💓','✨','🌺','💞'];
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('flying-heart');
+                heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+                const angle = (Math.random() * 360) * (Math.PI / 180);
+                const dist  = Math.random() * 300 + 100;
+                const size  = (Math.random() * 25 + 15).toFixed(0) + 'px';
+                const dur   = (Math.random() * 1.2 + 0.8).toFixed(2) + 's';
+                const delay = (Math.random() * 0.3).toFixed(2) + 's';
+                const dx    = (Math.cos(angle) * dist).toFixed(0) + 'px';
+                const dy    = (Math.sin(angle) * dist - dist * 0.5).toFixed(0) + 'px';
+                const dx20  = (Math.cos(angle) * dist * 0.2).toFixed(0) + 'px';
+                const dy20  = (Math.sin(angle) * dist * 0.2 - 30).toFixed(0) + 'px';
+                const r     = (Math.random() * 720 - 360).toFixed(0) + 'deg';
+                const r20   = (Math.random() * 30 - 15).toFixed(0) + 'deg';
+
+                heart.style.cssText = `
+                    left: ${x}px;
+                    top: ${y}px;
+                    --size: ${size};
+                    --dur: ${dur};
+                    --dx: ${dx};
+                    --dy: ${dy};
+                    --dx20: ${dx20};
+                    --dy20: ${dy20};
+                    --r: ${r};
+                    --r20: ${r20};
+                    animation-delay: ${delay};
+                `;
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    if (heart.parentNode) heart.parentNode.removeChild(heart);
+                }, 2500);
+            }
+        }
+
+        function createParticleBurst(x, y, count) {
+            const colors = ['#ff69b4','#e91e8c','#d4a8ff','#9b59b6','#ffb6d9','#fff0f8'];
+            for (let i = 0; i < count; i++) {
+                const p     = document.createElement('div');
+                p.classList.add('particle');
+                const size  = (Math.random() * 8 + 3).toFixed(0);
+                const angle = (Math.random() * 360) * (Math.PI / 180);
+                const dist  = Math.random() * 200 + 50;
+                const dur   = (Math.random() * 0.8 + 0.5).toFixed(2) + 's';
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const dx    = (Math.cos(angle) * dist).toFixed(0) + 'px';
+                const dy    = (Math.sin(angle) * dist).toFixed(0) + 'px';
+
+                p.style.cssText = `
+                    left: ${x}px; top: ${y}px;
+                    width: ${size}px; height: ${size}px;
+                    background: ${color};
+                    --dur: ${dur};
+                    --dx: ${dx};
+                    --dy: ${dy};
+                    box-shadow: 0 0 6px ${color};
+                `;
+                document.body.appendChild(p);
+
+                setTimeout(() => {
+                    if (p.parentNode) p.parentNode.removeChild(p);
+                }, 1500);
+            }
+        }
+
+        /* ================================================
+           TOAST NOTIFICATION
+        ================================================ */
+        let toastTimer = null;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        /* ================================================
+           PARALLAX EFFECT (Mouse Move)
+        ================================================ */
+        document.addEventListener('mousemove', e => {
+            const cx = window.innerWidth  / 2;
+            const cy = window.innerHeight / 2;
+            const dx = (e.clientX - cx) / cx;
+            const dy = (e.clientY - cy) / cy;
+
+            const parallaxLayer = document.getElementById('parallaxLayer');
+            parallaxLayer.style.transform = `translate(${dx * 8}px, ${dy * 8}px)`;
+
+            // Move ambient orbs slightly
+            document.querySelectorAll('.ambient-orb').forEach((orb, i) => {
+                const factor = (i + 1) * 3;
+                orb.style.transform = `translate(${dx * factor}px, ${dy * factor}px)`;
+            });
+        });
+
+        /* ================================================
+           SCROLL PARALLAX (Name)
+        ================================================ */
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const nameEl  = document.querySelector('.name-irene');
+            if (nameEl) {
+                nameEl.style.transform = `translateY(${scrollY * 0.15}px)`;
+            }
+        });
+
+        /* ================================================
+           INTERSECTION OBSERVER — letter lines
+        ================================================ */
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        // Will be called after intro dismissed
+        function observeLines() {
+            document.querySelectorAll('.typewriter-line').forEach(el => observer.observe(el));
+        }
+
+        /* ================================================
+           TOUCH SUPPORT (Mobile flying hearts)
+        ================================================ */
+        document.getElementById('loveBtn').addEventListener('touchstart', e => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            playLoveSound();
+            createFlyingHearts(touch.clientX, touch.clientY, 15);
+            createParticleBurst(touch.clientX, touch.clientY, 20);
+            loveClickCount++;
+            showToast(loveMessages[loveClickCount % loveMessages.length]);
+        });
+
+        /* ================================================
+           CARD TILT EFFECT (Desktop)
+        ================================================ */
+        const card = document.getElementById('letterCard');
+        card.addEventListener('mousemove', e => {
+            const rect   = card.getBoundingClientRect();
+            const cx     = rect.left + rect.width  / 2;
+            const cy     = rect.top  + rect.height / 2;
+            const dx     = (e.clientX - cx) / (rect.width  / 2);
+            const dy     = (e.clientY - cy) / (rect.height / 2);
+            const tiltX  = dy * 6;
+            const tiltY  = -dx * 6;
+            card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(10px)`;
+            card.style.boxShadow = `
+                ${-dx * 20}px ${-dy * 20}px 80px rgba(233,30,140,0.2),
+                0 0 60px rgba(233, 30, 140, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05)
+            `;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+            card.style.boxShadow = '';
+        });
+
+        /* ================================================
+           KEYBOARD SHORTCUT — Press 'L' for love
+        ================================================ */
+        document.addEventListener('keydown', e => {
+            if (e.key.toLowerCase() === 'l') {
+                const cx = window.innerWidth  / 2;
+                const cy = window.innerHeight / 2;
+                loveClick({ clientX: cx, clientY: cy });
+            }
+        });
+
+        /* ================================================
+           VISIBILITY API — Pause/Resume on tab switch
+        ================================================ */
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && isPlaying && audioCtx) {
+                audioCtx.suspend();
+            } else if (!document.hidden && isPlaying && audioCtx) {
+                audioCtx.resume();
+            }
+        });
+
+        /* ================================================
+           INIT
+        ================================================ */
+        window.addEventListener('load', () => {
+            // Show intro after tiny delay for smoothness
+            setTimeout(() => {
+                document.querySelector('.intro-heart').style.opacity = '1';
+            }, 100);
+        });
+
+    </script>
+</body>
+</html>
